@@ -11,6 +11,7 @@ on:
         options:
           - first_test
           - second_test
+          - run_all_tests
 
 jobs:
   run-tests:
