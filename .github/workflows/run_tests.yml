@@ -9,7 +9,8 @@ on:
         type: choice
         default: all
         options:
-          - all
+          - first_test
+          - second_test
 
 jobs:
   run-tests:
@@ -24,5 +25,9 @@ jobs:
           python-version: "3.11"
       - name: install dependencies
         run: pip install -r requirements.txt
-      - name: Run tests
-        run: pytest -v
+      - name: first_test
+        if: "github.event.inputs.deployment_target == 'first_test'"
+        run: pytest tests/test_site.py::test_open_galaxy_s6
+      - name: second_test
+        if: "github.event.inputs.deployment_target == 'second_test'"
+        run: pytest tests/test_site.py::test_two_monitors
