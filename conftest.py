@@ -6,7 +6,7 @@ import pytest
 @pytest.fixture()
 def driver():
     options = Options()
-    options.add_argument('--headless=new')
+    options.add_argument('--headless')
     driver = webdriver.Chrome()
     driver.maximize_window()
     driver.implicitly_wait(3)
